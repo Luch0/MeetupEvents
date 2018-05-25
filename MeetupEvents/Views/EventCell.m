@@ -9,7 +9,7 @@
 #import "EventCell.h"
 #import "ImageCache.h"
 
-#define PADDING 20
+#define PADDING 10
 
 // class extension
 @interface EventCell ()
@@ -75,7 +75,7 @@
     if (!_eventName)
         _eventName = [[UILabel alloc] init];
     [self addSubview:self.eventName];
-    self.eventName.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
+    self.eventName.font = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
     self.eventName.numberOfLines = 0;
     
     // setup constraints
@@ -88,7 +88,21 @@
 }
 
 - (void)setupGroupName {
-    // TODO: setup group name
+    //setup group name
+    if (!_groupName)
+        _groupName = [[UILabel alloc] init];
+    [self addSubview:self.groupName];
+    self.groupName.font = [UIFont systemFontOfSize:12 weight:UIFontWeightThin];
+    self.groupName.numberOfLines = 0;
+    
+    // setup constraints
+    self.groupName.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+                                              [self.groupName.topAnchor constraintEqualToAnchor:self.eventName.bottomAnchor constant: PADDING],
+                                              [self.groupName.leadingAnchor constraintEqualToAnchor:self.eventImage.trailingAnchor constant: PADDING],
+                                              [self.groupName.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant: -PADDING],
+                                              [self.groupName.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant: -PADDING]
+                                              ]];
 }
 
 - (void) prepareForReuse {
@@ -111,7 +125,11 @@
     else
         self.eventName.text = event.eventName;
     
-    // TODO: configure group name
+    // configure group name
+    if (!event.groupName)
+        self.groupName.text = @"No Group Name";
+    else
+        self.groupName.text = event.groupName;
     
     // configure image using ImageCache
     // this solution can be achieved through the use a cocoapod e.g SDWebImage...
