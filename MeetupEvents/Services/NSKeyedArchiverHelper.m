@@ -7,6 +7,7 @@
 //
 
 #import "NSKeyedArchiverHelper.h"
+#import "Event.h"
 
 @implementation NSKeyedArchiverHelper
 
@@ -40,9 +41,9 @@
 }
 
 
-- (void)saveMeetupEvents {
+- (BOOL)saveMeetupEvents {
     NSString *path = [[NSKeyedArchiverHelper sharedManager] dataFilePath];
-    [NSKeyedArchiver archiveRootObject:_meetupEvents toFile:path];
+    return [NSKeyedArchiver archiveRootObject:_meetupEvents toFile:path];
 }
 
 - (void)loadMeetupEvents {
@@ -53,13 +54,22 @@
     }
 }
 
-- (void)addEventToFaves:(Event*)eventToAdd {
+- (BOOL)addEventToFaves:(Event*)eventToAdd {
     [_meetupEvents addObject:eventToAdd];
-    [[NSKeyedArchiverHelper sharedManager] saveMeetupEvents];
+    return [[NSKeyedArchiverHelper sharedManager] saveMeetupEvents];
 }
 
 - (NSMutableArray*)getFaveMeetups {
     return _meetupEvents;
+}
+
+- (BOOL)isAlreadySaved:(Event*)eventToSave {
+    return [_meetupEvents containsObject:eventToSave];
+}
+
+- (BOOL)removeFromFaves:(Event*)eventToRemove {
+    [_meetupEvents removeObject:eventToRemove];
+    return [[NSKeyedArchiverHelper sharedManager] saveMeetupEvents];
 }
 
 @end

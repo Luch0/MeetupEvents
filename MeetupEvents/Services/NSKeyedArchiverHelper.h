@@ -17,9 +17,11 @@
 
 - (NSString *)documentsDirectory;
 - (NSString *)dataFilePath;
-- (void)saveMeetupEvents;
+- (BOOL)saveMeetupEvents;
 - (void)loadMeetupEvents;
-- (void)addEventToFaves:(Event*)eventToAdd;
+- (BOOL)addEventToFaves:(Event*)eventToAdd;
 - (NSMutableArray*)getFaveMeetups;
+- (BOOL)isAlreadySaved:(Event*)eventToSave;
+- (BOOL)removeFromFaves:(Event*)eventToRemove;
 
 @end

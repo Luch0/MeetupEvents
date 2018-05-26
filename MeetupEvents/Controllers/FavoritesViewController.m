@@ -10,6 +10,7 @@
 #import "Event.h"
 #import "EventCell.h"
 #import "NSKeyedArchiverHelper.h"
+#import "EventDetailViewController.h"
 
 @interface FavoritesViewController ()
 
@@ -22,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Favorites";
     _favoritesTableView.delegate = self;
     _favoritesTableView.dataSource = self;
     [_favoritesTableView registerClass:EventCell.class forCellReuseIdentifier:@"EventCell"];
@@ -30,6 +32,14 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [_favoritesTableView reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"FaveEventDetailSegue"]) {
+        EventDetailViewController *eventDVC = (EventDetailViewController *)[segue destinationViewController];
+        NSInteger tagIndex = _favoritesTableView.indexPathForSelectedRow.row;
+        eventDVC.event = [[NSKeyedArchiverHelper sharedManager] getFaveMeetups][tagIndex];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -45,6 +55,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"FaveEventDetailSegue" sender:self];
 }
 
 @end

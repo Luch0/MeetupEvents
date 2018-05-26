@@ -26,6 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Event";
+     if ([[NSKeyedArchiverHelper sharedManager] isAlreadySaved:_event])
+         [_saveMeetupButton setImage:[UIImage imageNamed:@"favorite_filled"]];
     [self setEvent];
 }
 
@@ -55,7 +58,6 @@
         _eventImageView.image = [UIImage imageNamed:@"placeholderImage"];
     }
     
-    
     if (!_event.eventName)
         _eventNameLabel.text = @"No Event Name";
     else
@@ -74,8 +76,7 @@
     if (!_event.rsvpCount)
         _rsvpCountLabel.text = @"No RSVP Count";
     else
-        _rsvpCountLabel.text = _event.eventName;
-    
+        _rsvpCountLabel.text = [@(_event.rsvpCount) stringValue];
     
     if (!_event.eventDescription)
         _eventDescriptionTextView.text = @"No Event Description";
@@ -86,29 +87,20 @@
 
 }
 - (IBAction)saveMeetupPressed:(UIBarButtonItem *)sender {
-    NSLog(@"Pressed save");
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = paths.firstObject;
-//    NSString *filename = @"meetups.plist";
-//    NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
-//    NSLog(@"%@", path);
-//
-//    NSMutableArray <Event *> *loadedEvents = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-//    if (loadedEvents == nil) {
-//        loadedEvents = [[NSMutableArray alloc] init];
-//    }
-//    [loadedEvents addObject:_event];
-//
-//    BOOL archived = [NSKeyedArchiver archiveRootObject:loadedEvents toFile:path];
-//    if (!archived) {
-//        NSLog(@"Error saving event");
-//    } else {
-//        NSLog(@"Saved successfully");
-//    }
+    if ([[NSKeyedArchiverHelper sharedManager] isAlreadySaved:_event]){
+        BOOL removed = [[NSKeyedArchiverHelper sharedManager] removeFromFaves:_event];
+        if (removed)
+            [_saveMeetupButton setImage:[UIImage imageNamed:@"favorite_unfilled"]];
+        else
+            NSLog(@"Error removing event");
+        return;
+    }
     
-    [[NSKeyedArchiverHelper sharedManager] addEventToFaves:_event];
-    
-    
+    BOOL saved = [[NSKeyedArchiverHelper sharedManager] addEventToFaves:_event];
+    if (saved)
+        [_saveMeetupButton setImage:[UIImage imageNamed:@"favorite_filled"]];
+    else
+        NSLog(@"Error saving event");
 }
 
 
