@@ -8,6 +8,7 @@
 
 #import "NSKeyedArchiverHelper.h"
 #import "Event.h"
+#import "Constants.h"
 
 @implementation NSKeyedArchiverHelper
 
@@ -24,7 +25,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _filename = @"meetups.plist";
+        _filename = FILENAME;
     }
     return self;
 }

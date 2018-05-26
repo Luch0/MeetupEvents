@@ -76,7 +76,8 @@
     if (!_event.rsvpCount)
         _rsvpCountLabel.text = @"No RSVP Count";
     else
-        _rsvpCountLabel.text = [@(_event.rsvpCount) stringValue];
+        _rsvpCountLabel.text = [@"RSVP: " stringByAppendingString:[@(_event.rsvpCount) stringValue]];
+        //_rsvpCountLabel.text = [@(_event.rsvpCount) stringValue];
     
     if (!_event.eventDescription)
         _eventDescriptionTextView.text = @"No Event Description";

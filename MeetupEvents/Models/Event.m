@@ -78,6 +78,7 @@
     [aCoder encodeObject:_eventId forKey:ID];
     [aCoder encodeObject:_eventName forKey:NAME];
     [aCoder encodeInteger:_rsvpCount forKey:RSVP_COUNT];
+    [aCoder encodeObject:_eventDescription forKey:EVENT_DESCRIPTION];
 }
 
 - (instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
@@ -87,6 +88,7 @@
         _eventId = [aDecoder decodeObjectForKey:ID];
         _eventName = [aDecoder decodeObjectForKey:NAME];
         _rsvpCount = [aDecoder decodeIntegerForKey:RSVP_COUNT];
+        _eventDescription = [aDecoder decodeObjectForKey:EVENT_DESCRIPTION];
     }
     return self;
 }
