@@ -1,0 +1,25 @@
+//
+//  NSKeyedArchiverHelper.h
+//  MeetupEvents
+//
+//  Created by Luis Calle on 5/25/18.
+//  Copyright © 2018 Lucho. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "Event.h"
+
+@interface NSKeyedArchiverHelper : NSObject
+
++ (instancetype)sharedManager;
+@property (nonatomic) NSString *filename;
+@property (nonatomic) NSMutableArray <Event *> *meetupEvents;
+
+- (NSString *)documentsDirectory;
+- (NSString *)dataFilePath;
+- (void)saveMeetupEvents;
+- (void)loadMeetupEvents;
+- (void)addEventToFaves:(Event*)eventToAdd;
+- (NSMutableArray*)getFaveMeetups;
+
+@end

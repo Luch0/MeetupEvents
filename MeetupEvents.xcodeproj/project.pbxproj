@@ -22,6 +22,7 @@
 		E246FFF220B8529000D39455 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E246FFF020B8529000D39455 /* LaunchScreen.storyboard */; };
 		E246FFF520B8529000D39455 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E246FFF420B8529000D39455 /* main.m */; };
 		E246FFFF20B8529000D39455 /* MeetupEventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E246FFFE20B8529000D39455 /* MeetupEventsTests.m */; };
+		E2C4804020B8FD0B005445F8 /* NSKeyedArchiverHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C4803F20B8FD0B005445F8 /* NSKeyedArchiverHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		E246FFF420B8529000D39455 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E246FFFA20B8529000D39455 /* MeetupEventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetupEventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E246FFFE20B8529000D39455 /* MeetupEventsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetupEventsTests.m; sourceTree = "<group>"; };
+		E2C4803E20B8FD0B005445F8 /* NSKeyedArchiverHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSKeyedArchiverHelper.h; sourceTree = "<group>"; };
+		E2C4803F20B8FD0B005445F8 /* NSKeyedArchiverHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSKeyedArchiverHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				E246001C20B8559E00D39455 /* MeetupAPI.m */,
 				E246001E20B855E000D39455 /* ImageCache.h */,
 				E246001F20B855E000D39455 /* ImageCache.m */,
+				E2C4803E20B8FD0B005445F8 /* NSKeyedArchiverHelper.h */,
+				E2C4803F20B8FD0B005445F8 /* NSKeyedArchiverHelper.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				E211152720B85E9800E0F29D /* EventDetailViewController.m in Sources */,
 				E246FFE720B8528E00D39455 /* AppDelegate.m in Sources */,
 				E211152A20B885DA00E0F29D /* FavoritesViewController.m in Sources */,
+				E2C4804020B8FD0B005445F8 /* NSKeyedArchiverHelper.m in Sources */,
 				E246002020B855E000D39455 /* ImageCache.m in Sources */,
 				E246001D20B8559E00D39455 /* MeetupAPI.m in Sources */,
 			);

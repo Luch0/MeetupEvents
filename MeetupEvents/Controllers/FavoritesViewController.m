@@ -9,6 +9,7 @@
 #import "FavoritesViewController.h"
 #import "Event.h"
 #import "EventCell.h"
+#import "NSKeyedArchiverHelper.h"
 
 @interface FavoritesViewController ()
 
@@ -24,33 +25,22 @@
     _favoritesTableView.delegate = self;
     _favoritesTableView.dataSource = self;
     [_favoritesTableView registerClass:EventCell.class forCellReuseIdentifier:@"EventCell"];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = paths.firstObject;
-    NSString *filename = @"meetups.plist";
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
-    _loadedMeetups = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    [_favoritesTableView reloadData];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = paths.firstObject;
-    NSString *filename = @"meetups.plist";
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
-    _loadedMeetups = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     [_favoritesTableView reloadData];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EventCell *cell = (EventCell *)[tableView dequeueReusableCellWithIdentifier:@"EventCell" forIndexPath:indexPath];
-    Event *meetup = _loadedMeetups[indexPath.row];
+    Event *meetup = [[NSKeyedArchiverHelper sharedManager] getFaveMeetups][indexPath.row];
     [cell configureViewWithEvent:meetup];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _loadedMeetups.count;
+    return [[NSKeyedArchiverHelper sharedManager] getFaveMeetups].count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

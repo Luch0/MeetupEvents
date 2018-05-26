@@ -8,6 +8,7 @@
 
 #import "EventDetailViewController.h"
 #import "ImageCache.h"
+#import "NSKeyedArchiverHelper.h"
 
 @interface EventDetailViewController ()
 
@@ -86,24 +87,27 @@
 }
 - (IBAction)saveMeetupPressed:(UIBarButtonItem *)sender {
     NSLog(@"Pressed save");
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = paths.firstObject;
-    NSString *filename = @"meetups.plist";
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
-    NSLog(@"%@", path);
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = paths.firstObject;
+//    NSString *filename = @"meetups.plist";
+//    NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
+//    NSLog(@"%@", path);
+//
+//    NSMutableArray <Event *> *loadedEvents = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+//    if (loadedEvents == nil) {
+//        loadedEvents = [[NSMutableArray alloc] init];
+//    }
+//    [loadedEvents addObject:_event];
+//
+//    BOOL archived = [NSKeyedArchiver archiveRootObject:loadedEvents toFile:path];
+//    if (!archived) {
+//        NSLog(@"Error saving event");
+//    } else {
+//        NSLog(@"Saved successfully");
+//    }
     
-    NSMutableArray <Event *> *loadedEvents = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    if (loadedEvents == nil) {
-        loadedEvents = [[NSMutableArray alloc] init];
-    }
-    [loadedEvents addObject:_event];
+    [[NSKeyedArchiverHelper sharedManager] addEventToFaves:_event];
     
-    BOOL archived = [NSKeyedArchiver archiveRootObject:loadedEvents toFile:path];
-    if (!archived) {
-        NSLog(@"Error saving event");
-    } else {
-        NSLog(@"Saved successfully");
-    }
     
 }
 
