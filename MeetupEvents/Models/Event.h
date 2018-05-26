@@ -18,6 +18,7 @@
 @property (nonatomic) NSInteger rsvpCount;
 @property (nonatomic, copy) NSString *eventName;
 @property (nonatomic, copy) NSString *localDate;
+@property (nonatomic, copy) NSString *eventDescription;
 
 // venue
 @property (nonatomic) NSDictionary *venueDict;

@@ -30,6 +30,8 @@
             _rsvpCount = [dict[RSVP_COUNT] integerValue];
         if (dict[LOCAL_DATE])
             _localDate = dict[LOCAL_DATE];
+        if (dict[EVENT_DESCRIPTION])
+            _eventDescription = dict[EVENT_DESCRIPTION];
         
         // venue dictionary
         if (dict[VENUE]) {

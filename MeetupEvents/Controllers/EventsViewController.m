@@ -7,6 +7,7 @@
 //
 
 #import "EventsViewController.h"
+#import "EventDetailViewController.h"
 #import "MeetupAPI.h"
 #import "Event.h"
 #import "EventCell.h"
@@ -28,6 +29,14 @@
     [self.tableView registerClass:EventCell.class forCellReuseIdentifier:@"EventCell"];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"EventDetailSegue"]) {
+        EventDetailViewController *eventDVC = (EventDetailViewController *)[segue destinationViewController];
+        NSInteger tagIndex = _tableView.indexPathForSelectedRow.row;
+        eventDVC.event = _events[tagIndex];
+    }
+}
+
 #pragma mark UITableView DataSource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.events.count;
@@ -43,6 +52,10 @@
 #pragma mark UITableViewDelegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"EventDetailSegue" sender:self];
 }
 
 #pragma mark UISearchBarDelegate Methods

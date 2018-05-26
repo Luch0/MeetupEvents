@@ -93,7 +93,7 @@
         _groupName = [[UILabel alloc] init];
     [self addSubview:self.groupName];
     self.groupName.font = [UIFont systemFontOfSize:12 weight:UIFontWeightThin];
-    self.groupName.numberOfLines = 0;
+    self.groupName.numberOfLines = 1;
     
     // setup constraints
     self.groupName.translatesAutoresizingMaskIntoConstraints = NO;
@@ -152,6 +152,8 @@
                 }
             }];
         }
+    } else {
+        _eventImage.image = [UIImage imageNamed:@"placeholderImage"];
     }
 }
 

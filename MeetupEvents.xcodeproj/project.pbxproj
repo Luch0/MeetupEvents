@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E211152720B85E9800E0F29D /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E211152620B85E9800E0F29D /* EventDetailViewController.m */; };
+		E211152A20B885DA00E0F29D /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E211152920B885DA00E0F29D /* FavoritesViewController.m */; };
 		E246001120B8541200D39455 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E246001020B8541200D39455 /* EventsViewController.m */; };
 		E246001420B8547700D39455 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E246001320B8547700D39455 /* EventCell.m */; };
 		E246001720B854C000D39455 /* EventService.m in Sources */ = {isa = PBXBuildFile; fileRef = E246001620B854C000D39455 /* EventService.m */; };
@@ -33,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E211152520B85E9800E0F29D /* EventDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
+		E211152620B85E9800E0F29D /* EventDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
+		E211152820B885DA00E0F29D /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		E211152920B885DA00E0F29D /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		E246000020B8529000D39455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E246000F20B8541200D39455 /* EventsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventsViewController.h; sourceTree = "<group>"; };
 		E246001020B8541200D39455 /* EventsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsViewController.m; sourceTree = "<group>"; };
@@ -113,6 +119,10 @@
 			children = (
 				E246000F20B8541200D39455 /* EventsViewController.h */,
 				E246001020B8541200D39455 /* EventsViewController.m */,
+				E211152520B85E9800E0F29D /* EventDetailViewController.h */,
+				E211152620B85E9800E0F29D /* EventDetailViewController.m */,
+				E211152820B885DA00E0F29D /* FavoritesViewController.h */,
+				E211152920B885DA00E0F29D /* FavoritesViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -291,7 +301,9 @@
 				E246002520B8567A00D39455 /* Event.m in Sources */,
 				E246FFF520B8529000D39455 /* main.m in Sources */,
 				E246001120B8541200D39455 /* EventsViewController.m in Sources */,
+				E211152720B85E9800E0F29D /* EventDetailViewController.m in Sources */,
 				E246FFE720B8528E00D39455 /* AppDelegate.m in Sources */,
+				E211152A20B885DA00E0F29D /* FavoritesViewController.m in Sources */,
 				E246002020B855E000D39455 /* ImageCache.m in Sources */,
 				E246001D20B8559E00D39455 /* MeetupAPI.m in Sources */,
 			);

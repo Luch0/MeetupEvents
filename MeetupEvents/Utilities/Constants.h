@@ -18,3 +18,4 @@
 #define URL_NAME @"urlname"
 #define HIGHEST_LINK @"highres_link"
 #define LOCAL_DATE @"local_date"
+#define EVENT_DESCRIPTION @"description"
